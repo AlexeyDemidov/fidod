@@ -1,0 +1,156 @@
+dnl Process this file with autoconf to produce a configure script.
+AC_INIT(src/fidod.c)
+AM_INIT_AUTOMAKE(fidod, 0.1)
+AM_CONFIG_HEADER(include/config.h)
+
+# Find an appropriate tar for use in "dist" targets.  A "best guess"
+# is good enough -- if we can't find GNU tar, we don't really care.
+AC_CHECK_PROGS(TAR, gnutar gtar tar)
+AC_PROG_AWK
+AC_PROG_CC
+AC_PROG_INSTALL
+AC_PROG_LN_S
+AC_PROG_RANLIB
+
+
+dnl Checks for header files.
+AC_HEADER_DIRENT
+AC_HEADER_STDC
+AC_HEADER_SYS_WAIT
+AC_CHECK_HEADERS(fcntl.h syslog.h unistd.h)
+
+dnl Checks for typedefs, structures, and compiler characteristics.
+AC_C_CONST
+AC_TYPE_PID_T
+AC_TYPE_SIZE_T
+AC_STRUCT_TM
+
+dnl Checks for library functions.
+AC_TYPE_SIGNAL
+AC_FUNC_STRFTIME
+AC_CHECK_FUNCS(regcomp strdup daemon)
+
+AC_ARG_WITH(ifmaildir, [  --ifmaildir=PATH       specify where ifmail binaries placed],
+        [fidod_cv_ifmaildir=$withval],
+        [ AC_CACHE_CHECK(where ifmail binaries placed,
+                       fidod_cv_ifmaildir,
+                [      fidod_cv_ifmaildir="/usr/lib/ifmail" ])
+        ])
+
+ifmaildir=$fidod_cv_ifmaildir
+AC_SUBST(ifmaildir)
+
+AC_ARG_WITH(unpackprogram, [  --unpackprogram=PATH       specify where ifunpack binary placed],
+        [fidod_cv_unpackprogram=$withval],
+        [ AC_CACHE_CHECK(where ifunpack binary placed,
+                       fidod_cv_unpackprogram,
+                [      fidod_cv_unpackprogram="${fidod_cv_ifmaildir}/ifunpack" ])
+        ])
+
+unpackprogram=$fidod_cv_unpackprogram
+AC_SUBST(unpackprogram)
+
+AC_ARG_WITH(packprogram, [  --packprogram=PATH       specify where ifpack binary placed],
+        [fidod_cv_packprogram=$withval],
+        [ AC_CACHE_CHECK(where ifpack binary placed,
+                       fidod_cv_packprogram,
+                [      fidod_cv_packprogram="${fidod_cv_ifmaildir}/ifpack" ])
+        ])
+
+packprogram=$fidod_cv_packprogram
+AC_SUBST(packprogram)
+
+AC_ARG_WITH(ifmailuser, [  --ifmailuser=username     specify ifmail user ],
+        [fidod_cv_ifmailuser=$withval],
+        [ AC_CACHE_CHECK(ifmail user,
+                       fidod_cv_ifmailuser,
+                [      fidod_cv_ifmailuser="ifmail" ])
+        ])
+
+ifmailuser=$fidod_cv_ifmailuser
+AC_SUBST(ifmailuser)
+
+AC_ARG_WITH(logfacility, [  --logfacility=username     specify default syslog facility ],
+        [fidod_cv_logfacility=$withval],
+        [ AC_CACHE_CHECK(default syslog facility,
+                       fidod_cv_logfacility,
+                [      fidod_cv_logfacility="LOG_LOCAL0" ])
+        ])
+
+logfacility=$fidod_cv_logfacility
+AC_SUBST(logfacility)
+
+AC_ARG_WITH(etcdir, [  --etcdir=PATH     specify default config dir ],
+        [fidod_cv_etcdir=$withval],
+        [ AC_CACHE_CHECK(default config dir,
+                       fidod_cv_etcdir,
+                [      fidod_cv_etcdir="/etc/" ])
+        ])
+
+ETCDIR=$fidod_cv_etcdir
+AC_SUBST(ETCDIR)
+
+
+AC_ARG_WITH(config, [  --config=PATH     specify default config file ],
+        [fidod_cv_config=$withval],
+        [ AC_CACHE_CHECK(default config,
+                       fidod_cv_config,
+                [      fidod_cv_config="${PACKAGE}.conf" ])
+        ])
+
+conffile=$fidod_cv_config
+AC_SUBST(conffile)
+
+AC_ARG_WITH(pidfile, [  --pidfile=PATH     specify default lock file ],
+        [fidod_cv_pidfile=$withval],
+        [ AC_CACHE_CHECK(default lock file,
+                       fidod_cv_pidfile,
+                [      fidod_cv_pidfile="/var/run/${PACKAGE}.pid" ])
+        ])
+
+pidfile=$fidod_cv_pidfile
+AC_SUBST(pidfile)
+
+AC_ARG_WITH(ifmaillogdir, [  --ifmaillogdir=PATH     specify where ifmail log files placed ],
+        [fidod_cv_ifmaillogdir=$withval],
+        [ AC_CACHE_CHECK(default ifmail log dir,
+                       fidod_cv_ifmaillogdir,
+                [      fidod_cv_ifmaillogdir="/var/log/ifmail" ])
+        ])
+
+ifmaillogdir=$fidod_cv_ifmaillogdir
+AC_SUBST(ifmaillogdir)
+
+AC_ARG_WITH(logfile, [  --logfile=PATH     specify default log file ],
+        [fidod_cv_logfile=$withval],
+        [ AC_CACHE_CHECK(default log file,
+                       fidod_cv_logfile,
+                [      fidod_cv_logfile="${ifmaillogdir}/${PACKAGE}.log" ])
+        ])
+
+logfile=$fidod_cv_logfile
+AC_SUBST(logfile)
+
+AC_ARG_WITH(ifmailspooldir, [  --ifmailspooldir=PATH     specify where ifmail spool placed ],
+        [fidod_cv_ifmailspooldir=$withval],
+        [ AC_CACHE_CHECK(default ifmail spool dir,
+                       fidod_cv_ifmailspooldir,
+                [      fidod_cv_ifmailspooldir="/var/spool/ifmail" ])
+        ])
+
+ifmailspooldir=$fidod_cv_ifmailspooldir
+AC_SUBST(ifmailspooldir)
+
+AC_ARG_WITH(protinbound, [  --inbound=PATH     specify default protected inbound dir ],
+        [fidod_cv_protinbound=$withval],
+        [ AC_CACHE_CHECK(default protected inbound dir,
+                       fidod_cv_protinbound,
+                [      fidod_cv_protinbound="${fidod_cv_ifmailspooldir}/inb.prot" ])
+        ])
+
+protinbound=$fidod_cv_protinbound
+AC_SUBST(protinbound)
+
+
+AC_OUTPUT([Makefile doc/Makefile lib/Makefile src/Makefile conf/Makefile conf/fidod.conf include/Makefile include/global.h])
+# [chmod +x automake aclocal])

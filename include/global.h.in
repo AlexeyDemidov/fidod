@@ -1,0 +1,16 @@
+#ifndef __GLOBAL_H
+#define __GLOBAL_H
+
+
+#define USER         "@ifmailuser@"
+#define CONFIGFILE   "@ETCDIR@/@conffile@"
+#define PIDFILE      "@pidfile@"
+#define LOGFILE      "@logfile@"
+#define LOGFACILITY   @logfacility@
+
+#define INBOUNDDIR    "@protinbound@"
+#define UNPACKPROGRAM "@unpackprogram@"
+#define PACKPROGRAM   "@packprogram@"
+
+
+#endif /* __GLOBAL_H */

@@ -1,0 +1,27 @@
+#
+# $Id: fidod.conf.in,v 1.1 1999-03-12 22:41:10 alexd Exp $
+#
+# config for `fidod'
+# Copyright (c) 1998 Alex L. Demidov
+#
+
+# fidod will switch to non-root user after startup
+#
+user 	@ifmailuser@
+
+# period for checking inbound dir
+checkperiod 10
+
+facility @logfacility@
+logfile	\
+    @logfile@
+
+unpack	@unpackprogram@
+pack	@packprogram@
+
+prot_inbound 	@protinbound@
+inbound		@inbound@
+
+pidfile @pidfile@
+
+verbose no

@@ -1,0 +1,43 @@
+#!/bin/sh
+#
+# fidod.init    This shell script takes care of starting and stopping
+#               tossd.
+#
+
+# Source function library.
+. /etc/rc.d/init.d/functions
+
+# FIXME
+[ -x /usr/sbin/fidod ] || exit 0
+
+# See how we were called.
+case "$1" in
+  start)
+	# Start daemons.
+	echo -n "Starting fidod: "
+	# FIXME
+	daemon /usr/sbin/fidod
+	echo
+	touch /var/lock/subsys/fidod
+	;;
+  stop)
+	# Stop daemons.
+	echo -n "Shutting down fidod: "
+	killproc fidod
+	echo
+	rm -f /var/lock/subsys/fidod
+	;;
+  restart)
+        $0 stop
+        $0 start
+        ;;
+  status)
+        status fidod
+        ;;
+  *)
+	echo "Usage: fidod.init {start|stop|restart|status}"
+	exit 1
+esac
+
+exit 0
+

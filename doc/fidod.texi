@@ -1,0 +1,19 @@
+\input texinfo @c -*-texinfo-*-
+@setfilename fidod.info
+@settitle fidod
+@setchapternewpage off
+
+@dircategory GNU admin
+@direntry
+* fidod: (fidod).		FIDO spool monitor
+@end direntry
+
+@titlepage
+@title fidod
+@subtitle For version @value{VERSION}, @value{UPDATED}
+@author Alex L. Demidov
+
+@page
+@end titlepage
+
+@bye
