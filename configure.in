@@ -36,7 +36,7 @@ AC_ARG_WITH(ifmaildir, [  --with-ifmaildir=PATH       specify where ifmail binar
         [fidod_cv_ifmaildir=$withval],
         [ AC_CACHE_CHECK(where ifmail binaries placed,
                        fidod_cv_ifmaildir,
-                [      fidod_cv_ifmaildir="/usr/lib/ifmail" ])
+                [      fidod_cv_ifmaildir="/usr/local/libexec/ifmail" ])
         ])
 
 ifmaildir=$fidod_cv_ifmaildir
@@ -66,7 +66,7 @@ AC_ARG_WITH(ifmailuser, [  --with-ifmailuser=username     specify ifmail user ],
         [fidod_cv_ifmailuser=$withval],
         [ AC_CACHE_CHECK(ifmail user,
                        fidod_cv_ifmailuser,
-                [      fidod_cv_ifmailuser="ifmail" ])
+                [      fidod_cv_ifmailuser="fido" ])
         ])
 
 ifmailuser=$fidod_cv_ifmailuser
@@ -86,7 +86,7 @@ AC_ARG_WITH(etcdir, [  --with-etcdir=PATH     specify default config dir ],
         [fidod_cv_etcdir=$withval],
         [ AC_CACHE_CHECK(default config dir,
                        fidod_cv_etcdir,
-                [      fidod_cv_etcdir="/etc/" ])
+                [      fidod_cv_etcdir="/usr/local/etc" ])
         ])
 
 ETCDIR=$fidod_cv_etcdir
@@ -117,7 +117,7 @@ AC_ARG_WITH(ifmaillogdir, [  --with-ifmaillogdir=PATH     specify where ifmail l
         [fidod_cv_ifmaillogdir=$withval],
         [ AC_CACHE_CHECK(default ifmail log dir,
                        fidod_cv_ifmaillogdir,
-                [      fidod_cv_ifmaillogdir="/var/log/ifmail" ])
+                [      fidod_cv_ifmaillogdir="/var/log/fido" ])
         ])
 
 ifmaillogdir=$fidod_cv_ifmaillogdir
@@ -137,7 +137,7 @@ AC_ARG_WITH(ifmailspooldir, [  --with-ifmailspooldir=PATH     specify where ifma
         [fidod_cv_ifmailspooldir=$withval],
         [ AC_CACHE_CHECK(default ifmail spool dir,
                        fidod_cv_ifmailspooldir,
-                [      fidod_cv_ifmailspooldir="/var/spool/ifmail" ])
+                [      fidod_cv_ifmailspooldir="/var/spool/fido" ])
         ])
 
 ifmailspooldir=$fidod_cv_ifmailspooldir

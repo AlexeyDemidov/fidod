@@ -1,2 +1,3 @@
 FIX %m printing in syslog
 FIX bogus error messages about child exit
+FIX if run not with UID=0 - cicle on geteuid
