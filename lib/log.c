@@ -4,10 +4,13 @@
  */
 
 /*
- *  $Id: log.c,v 1.5 2001-03-24 17:51:05 alexd Exp $
+ *  $Id: log.c,v 1.6 2001-03-24 20:24:56 alexd Exp $
  *
  *  $Log: log.c,v $
- *  Revision 1.5  2001-03-24 17:51:05  alexd
+ *  Revision 1.6  2001-03-24 20:24:56  alexd
+ *  program name cleanup
+ *
+ *  Revision 1.5  2001/03/24 17:51:05  alexd
  *  Added RCS strings to .c files
  *
  *  Revision 1.4  2001/03/24 17:48:31  alexd
@@ -37,14 +40,14 @@
 #include "daemon.h"
 #include "log.h"
 
-const static char *rcsid = "$Id: log.c,v 1.5 2001-03-24 17:51:05 alexd Exp $";
-const static char *revision = "$Revision: 1.5 $";
+const static char *rcsid = "$Id: log.c,v 1.6 2001-03-24 20:24:56 alexd Exp $";
+const static char *revision = "$Revision: 1.6 $";
 
 static int syslog_init = 0;
 static char *logfile = 0;
 
 /* FIXME: prog name */
-static char *program = "unknown program"; 
+extern char *program; 
 
 void initlog(const char *a_program, int facility, const char *a_logfile)
 {

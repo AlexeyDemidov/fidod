@@ -4,10 +4,13 @@
  */
 
 /*
- *  $Id: fidod.c,v 1.5 2001-03-24 17:51:13 alexd Exp $
+ *  $Id: fidod.c,v 1.6 2001-03-24 20:25:01 alexd Exp $
  *
  *  $Log: fidod.c,v $
- *  Revision 1.5  2001-03-24 17:51:13  alexd
+ *  Revision 1.6  2001-03-24 20:25:01  alexd
+ *  program name cleanup
+ *
+ *  Revision 1.5  2001/03/24 17:51:13  alexd
  *  Added RCS strings to .c files
  *
  *  Revision 1.4  2001/03/24 17:48:40  alexd
@@ -50,8 +53,10 @@
 
  */
 
-const static char *rcsid = "$Id: fidod.c,v 1.5 2001-03-24 17:51:13 alexd Exp $";
-const static char *revision = "$Revision: 1.5 $";
+const static char *rcsid = "$Id: fidod.c,v 1.6 2001-03-24 20:25:01 alexd Exp $";
+const static char *revision = "$Revision: 1.6 $";
+
+char *program = PACKAGE;
 
 /* configureation variables */
 const char *config_file = CONFIGFILE;
@@ -349,9 +354,10 @@ int main(int argc, char **argv)
 
 	leave_suid();
 
-	program = strrchr(argv[0], '/') + 1;
-	if (program == NULL || *program == 0)
+	if ( (program = strrchr(argv[0], '/')) == 0 )
 		program = argv[0];
+	else
+		program += 1;
 
 	if ( program == NULL || *program == 0 )
 		program = PACKAGE;
