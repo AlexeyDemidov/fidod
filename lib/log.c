@@ -4,10 +4,13 @@
  */
 
 /*
- *  $Id: log.c,v 1.4 2001-03-24 17:48:31 alexd Exp $
+ *  $Id: log.c,v 1.5 2001-03-24 17:51:05 alexd Exp $
  *
  *  $Log: log.c,v $
- *  Revision 1.4  2001-03-24 17:48:31  alexd
+ *  Revision 1.5  2001-03-24 17:51:05  alexd
+ *  Added RCS strings to .c files
+ *
+ *  Revision 1.4  2001/03/24 17:48:31  alexd
  *  Changed *program for logging
  *
  *  Revision 1.3  2000/04/23 23:33:39  alexd
@@ -33,6 +36,9 @@
 
 #include "daemon.h"
 #include "log.h"
+
+const static char *rcsid = "$Id: log.c,v 1.5 2001-03-24 17:51:05 alexd Exp $";
+const static char *revision = "$Revision: 1.5 $";
 
 static int syslog_init = 0;
 static char *logfile = 0;

@@ -4,10 +4,13 @@
  */
 
 /*
- *  $Id: readcfg.c,v 1.2 1999-03-12 22:46:55 alexd Exp $
+ *  $Id: readcfg.c,v 1.3 2001-03-24 17:51:05 alexd Exp $
  *
  *  $Log: readcfg.c,v $
- *  Revision 1.2  1999-03-12 22:46:55  alexd
+ *  Revision 1.3  2001-03-24 17:51:05  alexd
+ *  Added RCS strings to .c files
+ *
+ *  Revision 1.2  1999/03/12 22:46:55  alexd
  *  some headers
  *
  *  Revision 1.1.1.1  1999/03/12 22:41:10  alexd
@@ -23,6 +26,10 @@
 
 #include "readcfg.h"
 #include "log.h"
+
+const static char *rcsid = "$Id: readcfg.c,v 1.3 2001-03-24 17:51:05 alexd Exp $";
+const static char *revision = "$Revision: 1.3 $";
+
 
 int getvarstr( var_t *key , const char *str) {
     const char *p = str;

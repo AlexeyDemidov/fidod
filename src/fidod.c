@@ -4,10 +4,13 @@
  */
 
 /*
- *  $Id: fidod.c,v 1.4 2001-03-24 17:48:40 alexd Exp $
+ *  $Id: fidod.c,v 1.5 2001-03-24 17:51:13 alexd Exp $
  *
  *  $Log: fidod.c,v $
- *  Revision 1.4  2001-03-24 17:48:40  alexd
+ *  Revision 1.5  2001-03-24 17:51:13  alexd
+ *  Added RCS strings to .c files
+ *
+ *  Revision 1.4  2001/03/24 17:48:40  alexd
  *  Changed *program for logging
  *
  *  Revision 1.3  2001/03/24 17:03:57  alexd
@@ -47,8 +50,8 @@
 
  */
 
-const char *rcsid = "$Id: fidod.c,v 1.4 2001-03-24 17:48:40 alexd Exp $";
-const char *revision = "$Revision: 1.4 $";
+const static char *rcsid = "$Id: fidod.c,v 1.5 2001-03-24 17:51:13 alexd Exp $";
+const static char *revision = "$Revision: 1.5 $";
 
 /* configureation variables */
 const char *config_file = CONFIGFILE;

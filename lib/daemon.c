@@ -4,10 +4,13 @@
  */
 
 /*
- *  $Id: daemon.c,v 1.2 2000-04-23 09:19:12 alexd Exp $
+ *  $Id: daemon.c,v 1.3 2001-03-24 17:51:05 alexd Exp $
  *
  *  $Log: daemon.c,v $
- *  Revision 1.2  2000-04-23 09:19:12  alexd
+ *  Revision 1.3  2001-03-24 17:51:05  alexd
+ *  Added RCS strings to .c files
+ *
+ *  Revision 1.2  2000/04/23 09:19:12  alexd
  *  version 0.2
  *
  *  Revision 1.1.1.1  1999/03/12 22:41:10  alexd
@@ -31,6 +34,10 @@
 
 #include "daemon.h"
 #include "log.h"
+
+const static char *rcsid = "$Id: daemon.c,v 1.3 2001-03-24 17:51:05 alexd Exp $";
+const static char *revision = "$Revision: 1.3 $";
+
 
 /*
  * daemon mode support
