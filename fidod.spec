@@ -5,8 +5,8 @@ Version: %{version}
 Release: 1
 Copyright: GPL
 Group: Network/Daemons
-URL: http://st.simbirsk.su/~alexd/fidod.html
-Source: http://st.simbirsk.su/~alexd/files/fidod-%{version}.tar.gz
+URL: http://home.vinf.ru/~alexd/fidod.html
+Source: http://home.vinf.ru/~alexd/files/fidod-%{version}.tar.gz
 # Patch:
 BuildRoot: /tmp/fidod
 
