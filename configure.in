@@ -1,6 +1,6 @@
 dnl Process this file with autoconf to produce a configure script.
 AC_INIT(src/fidod.c)
-AM_INIT_AUTOMAKE(fidod, 0.1)
+AM_INIT_AUTOMAKE(fidod, 0.2)
 AM_CONFIG_HEADER(include/config.h)
 
 # Find an appropriate tar for use in "dist" targets.  A "best guess"
