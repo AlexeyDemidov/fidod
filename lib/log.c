@@ -4,11 +4,14 @@
  */
 
 /*
- *  $Id: log.c,v 1.1 1999-03-12 22:41:10 alexd Exp $
+ *  $Id: log.c,v 1.2 2000-04-23 09:19:12 alexd Exp $
  *
  *  $Log: log.c,v $
- *  Revision 1.1  1999-03-12 22:41:10  alexd
- *  Initial revision
+ *  Revision 1.2  2000-04-23 09:19:12  alexd
+ *  version 0.2
+ *
+ *  Revision 1.1.1.1  1999/03/12 22:41:10  alexd
+ *  imported fidod
  *
  *
  */
@@ -64,6 +67,7 @@ static void vmessage(  int loglevel, const char *format, va_list ap) {
         vsyslog( loglevel, format, ap );
     
     if( logfile || !daemon_mode ) {
+        /* FIXME: %m format */
         char str[BUFSIZE];
         char timestamp[BUFSIZE];
         

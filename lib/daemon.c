@@ -4,14 +4,19 @@
  */
 
 /*
- *  $Id: daemon.c,v 1.1 1999-03-12 22:41:10 alexd Exp $
+ *  $Id: daemon.c,v 1.2 2000-04-23 09:19:12 alexd Exp $
  *
  *  $Log: daemon.c,v $
- *  Revision 1.1  1999-03-12 22:41:10  alexd
- *  Initial revision
+ *  Revision 1.2  2000-04-23 09:19:12  alexd
+ *  version 0.2
+ *
+ *  Revision 1.1.1.1  1999/03/12 22:41:10  alexd
+ *  imported fidod
  *
  *
  */
+
+#include "config.h"
 
 #include <unistd.h>
 #include <stdlib.h>
@@ -19,6 +24,10 @@
 #include <signal.h>
 #include <errno.h>
 #include <pwd.h>
+#ifdef HAVE_GETRLIMIT
+#include <sys/time.h>
+#include <sys/resource.h>
+#endif
 
 #include "daemon.h"
 #include "log.h"
@@ -174,29 +183,40 @@ int daemon(int nochdir, int noclose)
 {
     pid_t pid;
 
-    if (!nochdir)
-	chdir("/");
 
     if ((pid = fork()) == -1) {
 	Perror("fork");
-	return 1;
+	return -1;
     }
     else {
 	if (pid)
-	    exit(0);
+	    _exit(0);
 	else {
-	    if (!noclose) {
-		/* close stdin/stdout/stderr */
+	    /* become process group leader */
+	    if ( setsid() == -1 ) {
+               Perror("setsid");
+               return -1;
+            } 
+            
+            if (!nochdir)
+            	chdir("/");
 
-		/* FIXME close all fd's, not only 1,2,3 */
-		/* maybe, look at bsd daemon() */
-		close(0);
-		close(1);
-		close(2);
+	    if (!noclose) {
+	        struct rlimit rlmt;
+                int fd = open( "/dev/null", O_RDWR, 0);
+		
+                if ( fd != -1 ) { 
+                  dup2(fd, 0  );
+                  dup2(fd, 1 );
+                  dup2(fd, 2 );
+                  if ( fd > 2 )       
+		    close(fd);
+		  getrlimit(RLIMIT_NOFILE, &rlmt );		    
+		  for ( fd = 3; fd < rlmt.rlim_max; fd++ )
+		     close( fd );
+                }    
 	    }
 
-	    /* become process group leader */
-	    setsid();
 	}
     }
     return 0;

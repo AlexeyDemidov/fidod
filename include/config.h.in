@@ -27,6 +27,9 @@
 /* Define if you have the daemon function.  */
 #undef HAVE_DAEMON
 
+/* Define if you have the getrlimit function.  */
+#undef HAVE_GETRLIMIT
+
 /* Define if you have the regcomp function.  */
 #undef HAVE_REGCOMP
 
@@ -53,6 +56,9 @@
 
 /* Define if you have the <unistd.h> header file.  */
 #undef HAVE_UNISTD_H
+
+/* Define if you have the alexd library (-lalexd).  */
+#undef HAVE_LIBALEXD
 
 /* Name of package */
 #undef PACKAGE

@@ -1,6 +1,6 @@
 AUTOMAKE_OPTIONS = foreign
 
-EXTRA_DIST = fidod.conf.in fidod.init
+EXTRA_DIST = fidod.conf.in fidod.init.in
 
 make-install-dirs:
 	-if test '!' -d $(ETCDIR)/ ; then mkdir -p $(ETCDIR)/; fi
