@@ -4,10 +4,13 @@
  */
 
 /*
- *  $Id: fidod.c,v 1.3 2001-03-24 17:03:57 alexd Exp $
+ *  $Id: fidod.c,v 1.4 2001-03-24 17:48:40 alexd Exp $
  *
  *  $Log: fidod.c,v $
- *  Revision 1.3  2001-03-24 17:03:57  alexd
+ *  Revision 1.4  2001-03-24 17:48:40  alexd
+ *  Changed *program for logging
+ *
+ *  Revision 1.3  2001/03/24 17:03:57  alexd
  *  fixed time( NULL ) alls
  *
  *  Revision 1.2  2000/04/23 09:19:12  alexd
@@ -44,8 +47,8 @@
 
  */
 
-const char *rcsid = "$Id: fidod.c,v 1.3 2001-03-24 17:03:57 alexd Exp $";
-const char *revision = "$Revision: 1.3 $";
+const char *rcsid = "$Id: fidod.c,v 1.4 2001-03-24 17:48:40 alexd Exp $";
+const char *revision = "$Revision: 1.4 $";
 
 /* configureation variables */
 const char *config_file = CONFIGFILE;
@@ -302,7 +305,7 @@ void parse_args(int argc, char **argv)
 				daemon_mode = 0;
 				break;
 			case 'V':
-				printf("fidod " VERSION " " __DATE__ "\n");
+				printf( PACKAGE " " VERSION " " __DATE__ "\n");
 				exit(0);
 				break;
 			case 'v':
@@ -346,6 +349,9 @@ int main(int argc, char **argv)
 	program = strrchr(argv[0], '/') + 1;
 	if (program == NULL || *program == 0)
 		program = argv[0];
+
+	if ( program == NULL || *program == 0 )
+		program = PACKAGE;
 
 	parse_args(argc, argv);
 

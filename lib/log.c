@@ -4,10 +4,13 @@
  */
 
 /*
- *  $Id: log.c,v 1.3 2000-04-23 23:33:39 alexd Exp $
+ *  $Id: log.c,v 1.4 2001-03-24 17:48:31 alexd Exp $
  *
  *  $Log: log.c,v $
- *  Revision 1.3  2000-04-23 23:33:39  alexd
+ *  Revision 1.4  2001-03-24 17:48:31  alexd
+ *  Changed *program for logging
+ *
+ *  Revision 1.3  2000/04/23 23:33:39  alexd
  *  try to fix %m in log printing
  *
  *  Revision 1.2  2000/04/23 09:19:12  alexd
@@ -35,7 +38,7 @@ static int syslog_init = 0;
 static char *logfile = 0;
 
 /* FIXME: prog name */
-static char *program = "tossd";
+static char *program = "unknown program"; 
 
 void initlog(const char *a_program, int facility, const char *a_logfile)
 {
