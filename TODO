@@ -1,0 +1,2 @@
+FIX %m printing in syslog
+FIX bogus error messages about child exit
