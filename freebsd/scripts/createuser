@@ -1,0 +1,51 @@
+#!/usr/bin/perl
+#
+# sampled from /usr/ports/databases/postgresql7/
+
+eval '(exit $?0)' && eval 'exec /usr/bin/perl -S $0 ${1+"$@"}'
+& eval 'exec /usr/bin/perl -S $0 $argv:q'
+if 0;
+
+if( $> ) {
+	print "\nYou must be root to run this step!\n\n";
+	exit 1;
+} 
+
+if( getpwnam( "fido" ) ) {
+	( $null, $null, $UID ) = getpwnam( "fido" );
+} else {
+	$UID = 71;
+	while( getpwuid( $UID ) ) {
+		$UID++;
+	}
+}
+
+if( getgrnam( "fido" ) ) {
+	( $null, $null, $GID ) = getgrnam( "fido" );
+} else {
+	$GID = 71;
+	while( getgrgid( $GID ) ) {
+		$GID++;
+	}
+	&append_file( "/etc/group", "fido:*:$GID:" );
+}
+
+print "fido user using uid $UID\n";
+print "fido user using gid $GID\n";
+
+system( "/usr/bin/chpass -a \"fido:*:$UID:$GID\:\:0:0:FIDO pseudo-user:$ENV{'PREFIX'}/fido:/bin/sh\"" );
+
+sub append_file {
+	local($file,@list) = @_;
+	local($LOCK_EX) = 2;
+	local($LOCK_NB) = 4;
+	local($LOCK_UN) = 8;
+
+	open(F, ">> $file") || die "$file: $!\n";
+	while( ! flock( F, $LOCK_EX | $LOCK_NB ) ) {
+		exit 1;
+	}
+	print F join( "\n", @list) . "\n";
+	close F;
+	flock( F, $LOCK_UN );
+}

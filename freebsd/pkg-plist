@@ -1,0 +1,7 @@
+etc/fidod.conf.sample
+etc/rc.d/fidod.sh.sample
+sbin/fidod
+share/doc/fidod/NEWS
+share/doc/fidod/README
+share/doc/fidod/TODO
+info/fidod.info

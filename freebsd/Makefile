@@ -15,17 +15,25 @@ GNU_CONFIGURE=  yes
 USE_GMAKE=	yes
 USE_AUTOCONF=   yes
 
-CONFIGURE_ARGS += --with-etcdir=${PREFIX}/etc/
-CONFIGURE_ARGS += --with-ifmaildir=${PREFIX}/libexec/ifmail/
+FIDO_USER=	fido
+FIDO_GROUP=	fido
 
 MAN8=	fidod.8
 
+pre-install:
+	${SETENV} ${MAKE_ENV} perl ${SCRIPTDIR}/createuser
+	${INSTALL} -d -o ${FIDO_USER} -g ${FIDO_GROUP} -m 751 /var/spool/fido
+	${INSTALL} -d -o ${FIDO_USER} -g ${FIDO_GROUP} -m 751 /var/spool/fido/inb
+	${INSTALL} -d -o ${FIDO_USER} -g ${FIDO_GROUP} -m 751 /var/spool/fido/inb.prot
+	${INSTALL} -d -o ${FIDO_USER} -g ${FIDO_GROUP} -m 751 /var/log/fido
+
 post-install:
-	@ ${INSTALL_DATA} ${WRKSRC}/conf/fidod.conf ${PREFIX}/etc/fidod.conf.sample
+	${INSTALL_SCRIPT} ${FILESDIR}/fidod.sh ${PREFIX}/etc/rc.d/fidod.sh.sample
+	${INSTALL_DATA} ${WRKSRC}/conf/fidod.conf ${PREFIX}/etc/fidod.conf.sample
 .if !defined(NOPORTDOCS)
-	@ ${MKDIR} ${PREFIX}/share/doc/fidod
+	${MKDIR} ${PREFIX}/share/doc/fidod
 .for file in NEWS README TODO
-	@ ${INSTALL_DATA} ${WRKSRC}/${file} ${PREFIX}/share/doc/fidod
+	${INSTALL_DATA} ${WRKSRC}/${file} ${PREFIX}/share/doc/fidod
 .endfor
 .endif
 	if [ ! -f ${PREFIX}/info/dir ]; then \
