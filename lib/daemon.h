@@ -15,8 +15,8 @@ void sig_term( int );
 void sig_chld( int );
 
 
-void enter_suid();
-void leave_suid();
+int enter_suid();
+int leave_suid();
 int check_pid_file();
 int create_pid_file();
 int remove_pid_file();
