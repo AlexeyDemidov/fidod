@@ -57,8 +57,8 @@
 /* Define if you have the <unistd.h> header file.  */
 #undef HAVE_UNISTD_H
 
-/* Define if you have the alexd library (-lalexd).  */
-#undef HAVE_LIBALEXD
+/* Define if you have the libalexd.a library (-llibalexd.a).  */
+#undef HAVE_LIBLIBALEXD_A
 
 /* Name of package */
 #undef PACKAGE

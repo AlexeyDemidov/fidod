@@ -4,10 +4,13 @@
  */
 
 /*
- *  $Id: fidod.c,v 1.2 2000-04-23 09:19:12 alexd Exp $
+ *  $Id: fidod.c,v 1.3 2001-03-24 17:03:57 alexd Exp $
  *
  *  $Log: fidod.c,v $
- *  Revision 1.2  2000-04-23 09:19:12  alexd
+ *  Revision 1.3  2001-03-24 17:03:57  alexd
+ *  fixed time( NULL ) alls
+ *
+ *  Revision 1.2  2000/04/23 09:19:12  alexd
  *  version 0.2
  *
  *  Revision 1.1.1.1  1999/03/12 22:41:10  alexd
@@ -41,8 +44,8 @@
 
  */
 
-const char *rcsid = "$Id: fidod.c,v 1.2 2000-04-23 09:19:12 alexd Exp $";
-const char *revision = "$Revision: 1.2 $";
+const char *rcsid = "$Id: fidod.c,v 1.3 2001-03-24 17:03:57 alexd Exp $";
+const char *revision = "$Revision: 1.3 $";
 
 /* configureation variables */
 const char *config_file = CONFIGFILE;
@@ -169,7 +172,7 @@ void run_unpack()
 		return;
 	}
 
-	if ((last_run + RUN_PERIOD) > time()) {
+	if ((last_run + RUN_PERIOD) > time( NULL )) {
 		debug("respawning unpack too fast.");
 		return;
 	}
@@ -190,7 +193,7 @@ void run_unpack()
 			wait(&status);
 			debug("unpack program returned with status %d", status);
 		}
-		last_run = time();
+		last_run = time( NULL );
 	}
 }
 
