@@ -4,8 +4,18 @@
 /*
  *  daemon.h - daemon mode support routines.
  *  Copyright (c) 1998 Alex L. Demidov
+ *
  */
 
+/*
+ *  $Id: daemon.h,v 1.3 1999-03-12 22:46:55 alexd Exp $
+ *
+ *  $Log: daemon.h,v $
+ *  Revision 1.3  1999-03-12 22:46:55  alexd
+ *  some headers
+ *
+ *
+ */
 
 extern const char *euser;
 extern const char *pid_file;

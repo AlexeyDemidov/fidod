@@ -1,6 +1,23 @@
 #ifndef _READCFG_H
 #define _READCFG_H
 
+/*
+ *  readcfg.h - config file support routines.
+ *  Copyright (c) 1998 Alex L. Demidov
+ *
+ */
+
+/*
+ *  $Id: readcfg.h,v 1.2 1999-03-12 22:46:55 alexd Exp $
+ *
+ *  $Log: readcfg.h,v $
+ *  Revision 1.2  1999-03-12 22:46:55  alexd
+ *  some headers
+ *
+ *
+ */
+
+
 extern const char *config_file;
 
 struct _var {

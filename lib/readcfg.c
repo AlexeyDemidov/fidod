@@ -1,14 +1,17 @@
 /*
- *  config.c - config reading routines.
+ *  readcfg.c - config reading routines.
  *  Copyright (c) 1998 Alex L. Demidov
  */
 
 /*
- *  $Id: readcfg.c,v 1.1 1999-03-12 22:41:10 alexd Exp $
+ *  $Id: readcfg.c,v 1.2 1999-03-12 22:46:55 alexd Exp $
  *
  *  $Log: readcfg.c,v $
- *  Revision 1.1  1999-03-12 22:41:10  alexd
- *  Initial revision
+ *  Revision 1.2  1999-03-12 22:46:55  alexd
+ *  some headers
+ *
+ *  Revision 1.1.1.1  1999/03/12 22:41:10  alexd
+ *  imported fidod
  *
  *
  */
